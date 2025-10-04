@@ -100,3 +100,37 @@ def chat(chat_history,query):
     res = qa.run(query)
     progressive_response = ""
     
+    for ele in "".join(res):
+        progressive_response += ele + ""
+        yield chat_history + [(query, progressive_response)]
+
+with gr.Blocks() as demo:
+    gr.HTML("""<h1>Welcome to AI Youtube Assistant</h1>""")
+    gr.Markdown(
+        "Generate transcript from Youtube url. Get a summarized text of the video transcript nd also ask questions to AI Youtube Assistant. <br>"
+        "Click on 'Build AI Bot' to extract transcript from youtube url and get a summarised text. <br>"
+        "After summarized text is generated, click on 'AI Assistant' tab and ask queries to the AI Assistantinformation in the youtube video."
+    )
+    
+    with gr.Tab("Load/Summarize Youtube Video"):
+        text_input = gr.Textbox(
+            label = "Paste a valid Youtube url",
+            placeholder="https://www.youtube.com/watch?v=AeJ9q45PfD0",
+        )
+        text_output = gr.Textbox(label = "Summarized transcript of the youtube video")
+        text_button = gr.Button(value = "Build AI bot!")
+        text_button.click(yt_loader,text_input,text_output)
+    
+    with gr.Tab("AI Assistant"):
+        chatbot = gr.Chatbot()
+        query = gr.Textbox(
+            label = "Type your query here, then press 'enter' and scroll up for response"
+        )
+        chat_button = gr.Button(value = "Submit Query!")
+        clear = gr.Button(value = "Clear Chat History")
+        clear.style(size = "sm")
+        query.submit(chat, [chatbot,query],chatbot)
+        chat_button.click(chat,[chatbot,query],chatbot)
+        clear.click(lambda:None,None,chatbot,queue=False)
+
+demo.queue.launch()
