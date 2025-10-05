@@ -12,5 +12,5 @@ Answer should be detailed and be based eexplicity on information in the context 
 
 CONTEXT: {context}
 QUESTION: {question}
-ANSWER:
+ANSWER: {answer}
 """
