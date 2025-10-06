@@ -1,8 +1,23 @@
-langchain 
-openai 
-tiktoken 
-cohere 
-gradio 
+# Core AI & LLM Framework
+langchain
+langchain-google-genai
+google-generativeai
+
+# Embeddings (you can still use Cohere)
+cohere
+
+# Vector Database
+qdrant-client
+
+# Transcript & Video Handling
 youtube-transcript-api
-pytube 
-qdrant-client 
+pytube
+
+# Web Interface
+gradio
+
+# Tokenization (for text splitting)
+tiktoken
+
+# Utilities
+requests
