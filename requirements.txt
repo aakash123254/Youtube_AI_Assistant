@@ -1,23 +1,28 @@
-# Core AI & LLM Framework
-langchain
-langchain-google-genai
-google-generativeai
+# Web/UI
+gradio==5.49.0
 
-# Embeddings (you can still use Cohere)
-cohere
+# HTTP requests
+requests==2.31.0
 
-# Vector Database
-qdrant-client
+# Environment variables
+python-dotenv==1.0.0
 
-# Transcript & Video Handling
-youtube-transcript-api
-pytube
+# YouTube transcripts
+youtube-transcript-api==0.6.0
 
-# Web Interface
-gradio
+# Data handling
+numpy==1.26.2
+pandas==2.1.1
 
-# Tokenization (for text splitting)
-tiktoken
+# NLP
+nltk==3.9.3
+spacy==3.7.3
+
+# Embeddings / ML
+scikit-learn==1.3.2
+torch==2.1.0
+transformers==4.44.0
+sentence-transformers==2.2.2
 
 # Utilities
-requests
+tqdm==4.66.1
